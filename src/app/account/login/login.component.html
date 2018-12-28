@@ -1,0 +1,46 @@
+<div class="login bg-orange">
+  <div class="login-page radius">
+      <div class="login-panel">
+        <div class="login-logo"><img class="main-img" src="../../../assets/img/mc-logo.png" /></div>
+        <div class="logo-text">
+          <h2> SIGN IN</h2>
+            <p>Hello There! Sign in to start managing your Maids n Cars</p>
+          </div>
+          <div class="login-form">
+        <form [formGroup]="loginForm">
+            <div class="cp-form-input">
+                <mat-form-field class="input-full-width">
+                <input
+                    type="text" name="email" formControlName="email" 
+                    matInput placeholder="Email" required/>
+                </mat-form-field>
+            </div>
+            <div class="cp-form-input">
+                <mat-form-field class="input-full-width">
+                <input
+                    type="text" name="password" formControlName="password" 
+                    matInput placeholder="Password" required/>
+                </mat-form-field>
+            </div>
+          <!-- <div class="login-row">
+            <input formControlName="email" placeholder="Email" class="itext-maid form-control" id="ex1" type="text">
+          </div>
+          <div class="login-row">
+            <input formControlName="password" placeholder="Password" class="form-control itext-maid" id="ex2" type="text">
+          </div> -->
+          <!-- <div class="col-md-12 err-msg" *ngIf="isError">
+            Please provide valid email or password.
+          </div> -->
+          <div class="login-row">
+              <button (click)="getLogin()" [disabled]="loginForm.invalid" class="login-btn radius">SIGN IN
+                  <img class="icon-img marign-lt5px" src="../../../assets/img/sidn-icon.svg" />
+                </button>
+          </div>
+        </form>
+        </div>
+        <div class="fgt-pwd">Forgot password?
+            <span class="reset color-orange">Reset</span>
+          </div>
+      </div>
+  </div>
+</div>

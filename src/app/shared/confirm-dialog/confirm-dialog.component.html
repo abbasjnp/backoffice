@@ -1,0 +1,13 @@
+<div class="qus-main">
+    <strong class="qus bg-orange-gdt">?</strong>
+
+    <div mat-dialog-content>
+        <h2 mat-dialog-title>{{data.title}}</h2>
+        <p>{{data.content}}</p>
+    </div>
+    <div mat-dialog-actions>
+        <button  class="input-btn btn-white marign-rt10px" (click)="onNoClick()"> No </button>
+        <button  [mat-dialog-close]="true"  cdkFocusInitial class="input-btn btn-orange">Yes</button>
+        
+    </div>
+</div>

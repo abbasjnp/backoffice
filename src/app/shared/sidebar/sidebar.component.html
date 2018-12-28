@@ -1,0 +1,72 @@
+<nav id="sidebar" class="bg-dark">
+  <!-- <span class="brandName">Master Channel Partner</span> -->
+  <ul class="list-unstyled components">
+    <li *ngFor="let nav of navs">
+      <!-- <div *ngIf="nav.visible"> -->
+        <a *ngIf="nav.subNavs.length>0 || nav.url ==='' || !nav.enable ">
+        <img class="icon-img marign-lt5px" src="{{nav.icon}}" />
+          {{nav.title}}
+        </a>
+        <a *ngIf="nav.subNavs.length==0 && nav.enable" routerLink="{{nav.url}}">
+         <img class="icon-img marign-lt5px" src="{{nav.icon}}" />
+            <!-- <i [class]="nav.icon"></i>-->
+          {{nav.title}}
+        </a>
+        <!-- <ul class="collapse list-unstyled">
+          <li *ngFor="let subnav of nav.subNavs">
+            <div *ngIf="subnav.visible">
+              <a *ngIf="subnav.url !=='' && subnav.enable" routerLink="{{subnav.url}}"> {{subnav.title}}</a>
+              <a *ngIf="subnav.url ==='' || !subnav.enable"> {{subnav.title}}</a>
+            </div>
+          </li>
+
+        </ul> -->
+      <!-- </div> -->
+    </li>
+  </ul>
+</nav>
+
+<!-- <nav id="sidebar" class="bg-dark">
+  <ul class="list-unstyled components">
+      <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+              <i class="glyphicon glyphicon-th-large"></i>Dashboard
+          </a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+              <li>
+                  <a href="#">
+                      <i class="glyphicon glyphicon-th-large"></i>Dashboard 1</a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="glyphicon glyphicon-th-large"></i>Dashboard 2</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <a href="#">
+              <i class="glyphicon glyphicon-tent"></i>Society</a>
+      </li>
+      <li>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+              <i class="glyphicon glyphicon-pushpin"></i>Pages</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li>
+                  <a href="#">
+                      <i class="glyphicon glyphicon-link"></i>Page 1</a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="glyphicon glyphicon-link"></i>Page 2</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <a href="#">
+              <i class="glyphicon glyphicon-map-marker"></i>Contact</a>
+      </li>
+  </ul>
+
+</nav> -->
+
+

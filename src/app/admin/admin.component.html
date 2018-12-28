@@ -1,0 +1,48 @@
+<!-- <div class="wrapper">
+  <app-header [alerts]="alerts" [alertCount]="alertCount" (markAsRead)="markAsRead($event)"></app-header>
+
+
+  <div class="container-fluid">
+
+    <div class="row">
+      
+      <app-sidebar [navs]="navs">
+        test
+      </app-sidebar>
+      
+      
+      <div class="main">
+        <div class="col-md-12">
+          <router-outlet></router-outlet>
+        </div>
+
+
+        <footer class="footer">
+          <div class="ftr-lt">
+            <span>© 2018 Maids and Car Management</span>
+          </div>
+          <div class="ftr-rt">
+            <span>Powered by </span>
+            <a href="">Abhishek</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="wrapper">
+  <app-header [alerts]="alerts" [alertCount]="alertCount" (markAsRead)="markAsRead($event)"></app-header>
+  <app-sidebar [navs]="navs">
+    test
+  </app-sidebar>
+      
+      
+  <div id="content">
+      <router-outlet></router-outlet>
+
+    <div class="footer">
+        © 2018 Maids and Car Management
+    </div>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<div class="content-top">
+  <div class="col-md-4 ">
+      <div class="row">
+          <ul class="breadcrumb">
+              <li>
+                  <a href="#">Dashboard</a>
+              </li>
+              <li >Employee</li>
+              <li class="active">{{employeeRegisterObj.name}}</li>
+          </ul>
+          <h4 class="breadcrumb-title">{{employeeRegisterObj.name}}</h4>
+      </div>
+  </div>
+
+  <div class="col-md-8 ">
+      <div class="row">
+        <div class="cnt-top-left-main">
+          <div class="cnt-top-btn">
+              <button class="content-top-btn bg-red" (click)="deleteEmployee()">
+                  <i class="glyphicon glyphicon-trash"></i> Delete</button>
+          </div>
+          <div class="cnt-top-btn">
+              <button class="content-top-btn bg-yellow" (click)="editEmployee()">
+                  <i class="glyphicon glyphicon-pencil"></i> Edit</button>
+          </div>
+        </div> 
+      </div>
+  </div>
+</div>
+<div class="content-main">
+  <div class="cnt radius">
+      <div class="cnt-title border-orange">Personal Details</div>
+      <div class="cnt-main">
+          <div class="col-md-2">
+              <div class="row">
+                <div class="profile-img" *ngIf="employeeRegisterObj.profile_pic === ''"><img src="../../../assets/img/profileimg.png"></div>
+                <div class="profile-img" *ngIf="employeeRegisterObj.profile_pic !== ''"><img [src]="employeeRegisterObj.profile_pic"></div>
+              </div>
+          </div>
+          <div class="col-md-10">
+          <div class="row">
+              <div class="col-md-4 col-sm-4">
+                  <p class="profile-list"><span class="profile-list-lab">Name <b>:</b></span> {{employeeRegisterObj.name}}</p>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                  <p class="profile-list"><span class="profile-list-lab">Age <b>:</b></span> {{employeeRegisterObj.age}}</p>
+              </div>
+              <div class=" col-md-4 col-sm-4">
+                  <p class="profile-list"><span class="profile-list-lab">Address<b>:</b></span>{{employeeRegisterObj.permanent_address}}</p>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                  <p class="profile-list"><span class="profile-list-lab">Aadhar No <b>:</b></span> {{employeeRegisterObj.adhaar_no}}</p>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                  <p class="profile-list"><span class="profile-list-lab">Police Verfication <b>:</b></span> {{employeeRegisterObj.police_verify ? 'Yes' : 'No'}}</p>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                  <p class="profile-list"><span class="profile-list-lab">Service Provider <b>:</b></span>{{employeeRegisterObj.service_name}}</p>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                  <p class="profile-list"><span class="profile-list-lab">Type <b>:</b></span>{{employeeRegisterObj.timing}}</p>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="cnt radius">
+      <div class="cnt-title border-orange">Landloard Detail</div>
+      <div class="cnt-main">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Landloard Address <b>:</b></span> {{employeeRegisterObj.land_lord_address}}</p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Landloard Number <b>:</b></span> {{employeeRegisterObj.land_lord_no}}</p>
+            </div>
+            <div class=" col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Emergency Contact <b>:</b></span> {{employeeRegisterObj.emergency_no}}</p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Permanent Address <b>:</b></span> {{employeeRegisterObj.permanent_address}}</p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Family Member No. <b>:</b></span> {{employeeRegisterObj.family_member_no}}</p>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div class="cnt radius">
+      <div class="cnt-title border-orange">Work Details</div>
+      <div class="cnt-main">
+        <div class="row" *ngFor="let work_detail of employeeRegisterObj.work_details">
+            <div class="col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Society Name<b>:</b></span> {{work_detail.socity_name}}</p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Tower<b>:</b></span> {{work_detail.tower_no}}</p>
+            </div>
+            <div class=" col-md-4 col-sm-4">
+                <p class="profile-list"><span class="profile-list-lab">Flat No<b>:</b></span> {{work_detail.flat_no}}</p>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div class="cnt radius">
+      <div class="cnt-title border-orange">Document</div>
+      <div class="cnt-main">
+          <div class="row">
+                <div class="doc-img" *ngIf="employeeRegisterObj.document === ''"><img src="../../../assets/img/add-file.png"></div>
+                    <a *ngIf="employeeRegisterObj.document !== ''" [href]="employeeRegisterObj.document" [download]="employeeRegisterObj.name">
+                        <div class="doc-img" ><img [src]="employeeRegisterObj.document">
+                        </div>
+                    </a>
+            </div>
+      </div>
+  </div>
+
+
+</div>

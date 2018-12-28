@@ -1,0 +1,94 @@
+<div class="content-top">
+    <div class="col-md-4 ">
+        <div class="row">
+            <ul class="breadcrumb">
+                <li>
+                    <a >Dashboard</a>
+                </li>
+                <li >Society</li>
+                <li *ngIf="isNewSociety" class="active">Add Society</li>
+                <li *ngIf="!isNewSociety" class="active">Edit Society</li>
+            </ul>
+            <h4 *ngIf="isNewSociety" class="breadcrumb-title">Add Society</h4>
+            <h4 *ngIf="!isNewSociety" class="breadcrumb-title">Edit Society</h4>
+        </div>
+    </div>
+
+</div>
+<div class="content-main">
+    <div class="cnt radius">
+        <div class="cnt-title-pink border-orange" *ngIf="isNewSociety">Add Society</div>
+        <div class="cnt-title-pink border-orange" *ngIf="!isNewSociety">Edit Society</div>
+        <div class="cnt-from">
+            <form name="societyRegisterForm" #societyRegisterForm="ngForm" >
+                <div class="input-row">
+                        <div class="cnt-from-input">
+                                <mat-form-field class="input-full-width">
+                                    <input type="text"  name="sname" [(ngModel)]="societyRegisterObj.name" matInput placeholder="Society Name" value="" required />
+                                </mat-form-field>
+                            </div>
+                            {{societyRegisterObj.name}}
+            
+                            <div class="cnt-from-input">
+                                <mat-form-field class="input-full-width">
+                                    <input type="text" name="area" [(ngModel)]="societyRegisterObj.area"  matInput placeholder="Sector / Area" value="" required />
+                                </mat-form-field>
+                            </div>
+
+                </div>
+                
+                <div class="input-row">
+                        <div class="cnt-from-input">
+                                <mat-form-field class="input-full-width">
+                                    <input type="text" name="city" [(ngModel)]="societyRegisterObj.city" matInput placeholder="City" value="" required />
+                                </mat-form-field>
+                            </div>
+                                
+                            <div class="cnt-from-input">
+                                <mat-form-field class="input-full-width">
+                                    <input type="text" name="state" [(ngModel)]="societyRegisterObj.state" matInput placeholder="State" value="" required />
+                                </mat-form-field>
+                            </div>
+                </div>
+
+                <div class="input-row">
+                <div class="cnt-from-input">
+                    <mat-form-field class="input-full-width">
+                        <input type="text" name="city" [(ngModel)]="societyRegisterObj.city" matInput placeholder="City" value="" required />
+                    </mat-form-field>
+                </div>
+                    
+                <div class="cnt-from-input">
+                    <mat-form-field class="input-full-width">
+                        <input type="text" name="state" [(ngModel)]="societyRegisterObj.state" matInput placeholder="State" value="" required />
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="input-row">
+
+                <div class="cnt-from-input">
+                    <mat-form-field class="input-full-width">
+                        <input type="number" name="pincode"  [(ngModel)]="societyRegisterObj.pincode"  matInput placeholder="Pincode" value="" maxlength="6" minlength="6" />
+                    </mat-form-field>
+                </div>
+                        
+                <div class="cnt-from-input">
+                    <mat-form-field class="input-full-width">
+                        <input type="number" name="total_towers" [(ngModel)]="societyRegisterObj.total_towers" matInput placeholder="No of Tower" value="" />
+                    </mat-form-field>
+                </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-full-width">
+                        <button *ngIf="isNewSociety"  [disabled]="!societyRegisterForm.valid" [ngClass]="{ 'btn-gray': !societyRegisterForm.valid, 'btn-orange': societyRegisterForm.valid }" type="submit" (click)="societyRegister(societyRegisterObj)" class="input-btn">Add Society</button>
+                        <button *ngIf="!isNewSociety"  [disabled]="!societyRegisterForm.valid" [ngClass]="{  'btn-gray': !societyRegisterForm.valid,  'btn-orange': societyRegisterForm.valid  }" type="submit" (click)="societyUpdate(societyRegisterObj)" class="input-btn">Save</button>
+                        <button type="button"  class="input-btn btn-white marign-rt10px" (click)="cancel()" > Cancel </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

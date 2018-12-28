@@ -1,0 +1,193 @@
+<div class="content-top">
+        <div class="col-md-4 ">
+            <div class="row">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li >Employee</li>
+                    <li *ngIf="isNewEmployee" class="active">Add Employee</li>
+                    <li *ngIf="!isNewEmployee" class="active">Edit Employee</li>
+                </ul>
+                <h4 class="breadcrumb-title" *ngIf="isNewEmployee">Add Employee</h4>
+                <h4 class="breadcrumb-title" *ngIf="!isNewEmployee">Edit Employee</h4>
+            </div>
+        </div>
+    
+    </div>
+    <div class="content-main">
+        <div class="cnt radius">
+            <div class="cnt-title-pink border-orange" *ngIf="isNewEmployee">Add Employee</div>
+            <div class="cnt-title-pink border-orange" *ngIf="!isNewEmployee">Edit Employee</div>
+            <div class="cnt-from">
+                <!-- <form name="employeeRegisterForm" #employeeRegisterForm="ngForm" > -->
+                    <form name="employeeRegisterForm" #employeeRegisterForm="ngForm">
+                    <div class="input-row">
+                        <div class="emp-images">
+                            <img *ngIf="isNewEmployee" src="../../../assets/img/profileimg.png">
+                            <img *ngIf="!isNewEmployee && employeeRegisterObj.profile_pic===''" src="../../../assets/img/profileimg.png">
+                            <img *ngIf="!isNewEmployee && employeeRegisterObj.profile_pic!==''" [src]="employeeRegisterObj.profile_pic">
+                        </div>
+                        <input type="file" #dpdata style="display:none" (change)="handleFileInput($event.target.files, 'p')">
+                        <div class="emp-choose-file">
+                            <div (click)="dpdata.click()" class="cnt-top-btn">
+                                <div class="input-btn btn-white" >  Choose File</div>
+                            </div>
+                        </div>
+                        <div class="document">
+                            <img *ngIf="isNewEmployee" src="../../../assets/img/add-file.png">
+                            <img *ngIf="!isNewEmployee && employeeRegisterObj.document===''" src="../../../assets/img/profileimg.png">
+                            <img *ngIf="!isNewEmployee && employeeRegisterObj.document!==''" [src]="employeeRegisterObj.document">
+                        </div>
+                        <input type="file" #docdata style="display:none" (change)="handleFileInput($event.target.files, 'd')">
+                        <div class="emp-upload-doc">
+                            <div (click)="docdata.click()" class="cnt-top-btn">
+                                <div  class="input-btn btn-white" > Upload Doc</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input matInput name="name" [(ngModel)]="employeeRegisterObj.name" placeholder="Full Name" value="" required>
+                            </mat-form-field>
+                        </div>
+                    
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input matInput name="land_lord_address" [(ngModel)]="employeeRegisterObj.land_lord_address" placeholder="Landlord Address" value="" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input type="number" matInput name="mobile" [(ngModel)]="employeeRegisterObj.mobile" placeholder="Mobile Number" value="" required>
+                            </mat-form-field>
+                        </div>
+                        
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input type="number" matInput name="land_lord_no" [(ngModel)]="employeeRegisterObj.land_lord_no" placeholder="Landlord Number" value="" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+    
+                    <div class="input-row">
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input type="number" matInput name="adhaar_no" [(ngModel)]="employeeRegisterObj.adhaar_no" placeholder="Aadhar Number" value="" required>
+                            </mat-form-field>
+                        </div>
+                            
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input matInput name="permanent_address" [(ngModel)]="employeeRegisterObj.permanent_address" placeholder="Permanent Address" value="" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input type="number" matInput name="age" [(ngModel)]="employeeRegisterObj.age" placeholder="Age" value="" required>
+                            </mat-form-field>
+                        </div>
+                    
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input type="number" matInput name="emergency_no" [(ngModel)]="employeeRegisterObj.emergency_no" placeholder="Emergency Contact Details" value="" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <mat-select name="police_verify" [(ngModel)]="employeeRegisterObj.police_verify" placeholder="Police Verification" required>
+                                    <mat-option [value]="true">Yes</mat-option>
+                                    <mat-option [value]="false">No</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <input type="number" matInput name="family_member_no" [(ngModel)]="employeeRegisterObj.family_member_no" placeholder="Family Member Contact" value="" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="cnt-from-input">
+                            <mat-form-field class="input-full-width">
+                                <mat-select name="service_name" [(ngModel)]="employeeRegisterObj.service_name" placeholder="Select Service" required (selectionChange)="getTimingLookupByService()">
+                                    <mat-option [value]="'Maid'">Maid</mat-option>
+                                    <mat-option [value]="'Cook'">Cook</mat-option>
+                                    <mat-option [value]="'Driver'">Driver</mat-option>
+                                    <mat-option [value]="'Child Care'">Child Care</mat-option>
+                                    <mat-option [value]="'Elder Care'">Elder Care</mat-option>
+                                    <mat-option [value]="'Car Cleaner'">Car Cleaner</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+    
+                    <div class="input-row">
+                        <p>Employee Type</p>
+                        <mat-radio-group name="timing" [(ngModel)]="employeeRegisterObj.timing" required (change)="getjobLocationLookupByTiming($event.value)">
+                            <mat-radio-button *ngFor="let item of timings" [value]="item.val">{{item.name}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="input-row">
+                        <p>Work Location</p>
+                        <div *ngFor="let societyDetail of employeeRegisterObj.job_location;let _index = index;trackBy: trackByFn">
+                            
+                            <div class="cnt-add-from-row">
+                                <mat-form-field class="input-full-width">
+                                    <mat-select name="socity_id{{_index}}" placeholder="Work Society Name" [(ngModel)]="societyDetail.socity_id">
+                                    <mat-option *ngFor="let item of societyLookup" [value]="item.id">{{item.socity_name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="cnt-add-from-row2">
+                                <mat-form-field class="input-full-width">
+                                    <input matInput name="tower_no{{_index}}" [(ngModel)]="societyDetail.tower_no" placeholder="Tower Number" value="">
+                                </mat-form-field>
+                            </div>
+                                
+                            <div class="cnt-add-from-row2">
+                                <mat-form-field class="input-full-width">
+                                    <input type="number" matInput name="flat_no{{_index}}" [(ngModel)]="societyDetail.flat_no" placeholder="Flat Number" value="">
+                                </mat-form-field>
+                            </div>                           
+                            <!-- <div class="cnt-add-from-row-btn" *ngIf="_index===0 && employeeRegisterObj.timing==='part'">
+                                <div class="input-btn btn bg-green" (click)="addWorkLocation()">
+                                <i class="glyphicon glyphicon-plus"></i> Add</div>
+                            </div>
+
+                            <div class="cnt-add-from-row-btn" *ngIf="_index!==0  && employeeRegisterObj.timing==='part'">
+                                <div class="input-btn btn bg-green"  (click)="removeWorkLocation(_index)">
+                                <i class="fa fa-minus"></i> Remove</div>
+                            </div> -->
+
+                        </div>
+                    </div>
+    
+                    <div class="input-row">
+                        <div class="input-full-width">
+                            
+                            <button *ngIf="isNewEmployee"  [disabled]="!employeeRegisterForm.valid" 
+                            [ngClass]="{ 'btn-gray': !employeeRegisterForm.valid, 'btn-orange': employeeRegisterForm.valid }" type="submit" 
+                            (click)="employeeRegister(employeeRegisterObj)" class="input-btn">Save</button>                            
+                            
+                            <button *ngIf="!isNewEmployee" [disabled]="!employeeRegisterForm.valid" 
+                            [ngClass]="{'btn-gray': !employeeRegisterForm.valid, 'btn-orange': employeeRegisterForm.valid}" type="submit" 
+                            (click)="employeeUpdate(employeeRegisterObj)" class="input-btn">Update</button>
+                            
+                            <button type="button" class="input-btn btn-white marign-rt10px" (click)="cancel()" > Cancel </button>
+                            
+                        </div>
+                    </div>
+                </form>
+        
+            </div>
+            
+        </div>
+    </div>
